@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719cc4e128d919a499ee17bfe9c5b24a, type: 3}
+  m_Name: Interior Triple Canon Weapon Parameters
+  m_EditorClassIdentifier: 
+  shootParameters: {fileID: 11400000, guid: 5a9f414b58b75e0499c57c000c6751a4, type: 2}
+  weaponPrefab: {fileID: 7427517646727564426, guid: 75cce6882d51881469728cb1d9c3d7b8,
+    type: 3}

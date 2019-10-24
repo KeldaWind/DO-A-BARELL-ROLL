@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57322b8fe37eea240bdfd84628827fbb, type: 3}
+  m_Name: SniperShootParameters
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8471199808687458788, guid: 3dd41dea45add644584c72fa3782b244,
+    type: 3}
+  shootCadence: 0.5
+  numberOfProjectilesPerShot: 1
+  imprecisionAngle: 0
+  numberOfSerialShots: 1
+  timeBetweenEachSerialShot: 0.2
+  projectileParameters: {fileID: 11400000, guid: 2f075c642e8eb384b85e66790efae702,
+    type: 2}

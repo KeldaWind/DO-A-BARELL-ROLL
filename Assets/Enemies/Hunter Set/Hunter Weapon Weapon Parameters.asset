@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719cc4e128d919a499ee17bfe9c5b24a, type: 3}
+  m_Name: Hunter Weapon Weapon Parameters
+  m_EditorClassIdentifier: 
+  shootParameters: {fileID: 11400000, guid: 93c0c53586627374c882cc0c3a6b9327, type: 2}
+  weaponPrefab: {fileID: 382814403913319324, guid: e34e842360f87204f9ff74c99ccd2ca7,
+    type: 3}

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719cc4e128d919a499ee17bfe9c5b24a, type: 3}
+  m_Name: BaseLaserParameters
+  m_EditorClassIdentifier: 
+  shootParameters: {fileID: 11400000, guid: 3ab130ab4ce6c46498744f39128549df, type: 2}
+  weaponPrefab: {fileID: 1272684023525907030, guid: 435a7a46ae188aa44b2f97f5a81c796f,
+    type: 3}
