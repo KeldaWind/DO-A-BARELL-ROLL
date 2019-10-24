@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SpaceShipScript : MonoBehaviour
 {
-    bool setedUp = true;
-
+    protected bool firstSetupDone;
     #region Movements
     [HideInInspector] [SerializeField] SpaceShipMovementSystem movementSystem = new SpaceShipMovementSystem();
     public SpaceShipMovementSystem GetMovementSystem { get { return movementSystem; } }
@@ -82,17 +81,29 @@ public class SpaceShipScript : MonoBehaviour
     }
     #endregion
 
-    public virtual void SetUp()
+    public virtual void FirstSetUp()
     {
+        if (firstSetupDone)
+            return;
+
+        firstSetupDone = true;
+
         movementSystem.SetUp();
         movementSystem.OnBarellRollStart += SetInvulnerable;
         movementSystem.OnBarellRollEnd += SetVulnerable;
 
-        shootingSystem.SetUp(damageTag);
+        shootingSystem.SetUp(damageTag, false);
 
         relatedDamageableComponent.SetUp(damageTag);
-        relatedDamageableComponent.OnLifeAmountChanged += DebugLogLifeAmount;
+        //relatedDamageableComponent.OnLifeAmountChanged += DebugLogLifeAmount;
         relatedDamageableComponent.OnLifeAmountReachedZero += Die;
+    }
+
+    public virtual void ResetValues()
+    {
+        movementSystem.Reset();
+        shootingSystem.Reset();
+        relatedDamageableComponent.ResetValues();
     }
 
     public virtual void UpdateSpaceShip()
@@ -113,7 +124,7 @@ public class SpaceShipScript : MonoBehaviour
 
     private void Start()
     {
-        SetUp();
+        FirstSetUp();
     }
 
     private void Update()

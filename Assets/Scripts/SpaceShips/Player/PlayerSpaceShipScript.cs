@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class PlayerSpaceShipScript : SpaceShipScript
 {
-    //[Header("Inputs")]
+    float maxReachedY;
+    float startY;
+
+    public void UpdateTravelledDistance()
+    {
+        if(transform.position.y > maxReachedY)
+        {
+            maxReachedY = transform.position.y;
+            GameManager.gameManager.GetQuestCheckingManager.UpdateTravelledDistance(maxReachedY - startY);
+        }
+    }
+
     [HideInInspector] [SerializeField] PlayerShipInputs playerShipInputs = default;
     public PlayerShipInputs GetPlayerShipInputs { get { return playerShipInputs; } }
     public void SetPlayerShipInputs(PlayerShipInputs inputs)
@@ -40,4 +51,30 @@ public class PlayerSpaceShipScript : SpaceShipScript
     public override bool IsMaintainingShootInput { get { return Input.GetKey(playerShipInputs.GetShootKey); } }
     public override bool ReleasedShootInput { get { return Input.GetKeyUp(playerShipInputs.GetShootKey); } }
     #endregion
+
+    public override void FirstSetUp()
+    {
+        base.FirstSetUp();
+
+        shootingSystem.InstantiateWeapon();
+
+        GetMovementSystem.OnBarellRollEnd += GameManager.gameManager.GetQuestCheckingManager.IncreamentNumberOfBarellRoll;
+
+        startY = transform.position.y;
+        maxReachedY = startY;
+    }
+
+    public override void UpdateSpaceShip()
+    {
+        base.UpdateSpaceShip();
+
+        UpdateTravelledDistance();
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        GameManager.gameManager.GetQuestCheckingManager.DebugStats();
+    }
+
 }

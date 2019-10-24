@@ -23,6 +23,11 @@ public class DamageableComponent : MonoBehaviour
         damageTag = dmgTag;
     }
 
+    public void ResetValues()
+    {
+        currentLifeAmount = maxLife;
+    }
+
     public void Damage(int damageValue)
     {
         currentLifeAmount -= Mathf.Abs(damageValue);

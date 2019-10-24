@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9e2fb59267ba4791453e22dfb77e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolingIndex: 300
   hitbox: {fileID: 3863071326383205343}
   hitObjectCheckLayerMask:
     serializedVersion: 2

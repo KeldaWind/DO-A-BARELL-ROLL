@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
 {
+    [HideInInspector] [SerializeField] int poolingIndex;
+    public void SetPoolingIndex(int index) { poolingIndex = index; }
+    public int GetPoolingIndex { get { return poolingIndex; } }
+
     PlayerSpaceShipScript targetPlayer;
 
     [SerializeField] EnemyAimingType aimingType;
@@ -11,19 +15,25 @@ public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
 
     #region Inputs Simulation
     public override bool IsMaintainingShootInput { get { return enteredScreen && shootingSystem.CanShoot; } }
-    #endregion
-    
-    public override void SetUp()
-    {
-        base.SetUp();
+    #endregion   
 
-        enteredScreen = false;
+    public override void FirstSetUp()
+    {
+        base.FirstSetUp();
 
         if (aimingType == EnemyAimingType.AimTowardPlayer)
             targetPlayer = GameManager.gameManager.GetPlayer;
 
         screenKillTransform = GameManager.gameManager.GetGameScroller.GetKillTransform;
         screenEnterTransform = GameManager.gameManager.GetGameScroller.GetEnterTransform;
+    }
+
+    public override void ResetValues()
+    {
+        base.ResetValues();
+
+        enteredScreen = false;
+        gameObject.SetActive(true);
     }
 
     public override void UpdateSpaceShip()
@@ -37,7 +47,7 @@ public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
         base.UpdateSpaceShip();
 
         if(CheckIfScreenKill())
-            Die();
+            ReturnObjectToPool();
     }
 
     public void UpdateEnemyBehaviour()
@@ -68,20 +78,34 @@ public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
         return transform.position.y < screenKillTransform.transform.position.y;
     }
 
+    public void SetUpOnPoolInstantiation(int poolIndex)
+    {
+        shootingSystem.InstantiateWeapon();
+        gameObject.SetActive(false);
+        poolingIndex = poolIndex;
+    }
+
     public void ResetPoolableObject()
     {
-        SetUp();
+        ResetValues();
     }
+
 
     public void ReturnObjectToPool()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        if (OnReturnToPool != null)
+            OnReturnToPool(this);
+        else
+            Destroy(gameObject);
     }
+
+    public System.Action<EnemySpaceShipScript> OnReturnToPool;
 
     public override void Die()
     {
-        Debug.Log("Need to return to pool");
-        base.Die();
+        ReturnObjectToPool();
+        GameManager.gameManager.GetQuestCheckingManager.IncreamentNumberOfKilledEnemies();
     }
 }
 

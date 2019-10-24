@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMovementValues:
     maxSpeed: 8
-    acceleration: 880
-    desceleration: 80
+    acceleration: 60
+    desceleration: 60
   barellRollValues:
     canDoABarellRool: 1
     barellRollCooldown: 0.6
-    barellRollDistance: 4
-    barellRollDuration: 0.2
+    barellRollDistance: 3
+    barellRollDuration: 0.12
     barellRollCurve:
       serializedVersion: 2
       m_Curve:

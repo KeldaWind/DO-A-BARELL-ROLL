@@ -12,4 +12,6 @@ public interface IPoolableObject
 
     void ReturnObjectToPool();
 
+    void SetUpOnPoolInstantiation(int poolIndex);
+
 }

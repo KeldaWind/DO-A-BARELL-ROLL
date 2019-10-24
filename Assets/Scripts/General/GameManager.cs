@@ -16,11 +16,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameScroller gameScroller = default;
     public GameScroller GetGameScroller { get { return gameScroller; } }
 
+    [SerializeField] PoolingManager poolingManager = default;
+    public PoolingManager GetPoolingManager { get { return poolingManager; } }
+
+    [SerializeField] QuestCheckingManager questCheckingManager = default;
+    public QuestCheckingManager GetQuestCheckingManager { get { return questCheckingManager; } }
+
     private void Awake()
     {
         gameManager = this;
 
         if (gameScroller != null)
             gameScroller.SetUp(player);
+
+        poolingManager.CreatePoolsQueuesAndDictionary();
     }
 }

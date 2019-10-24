@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ProjectileScript : MonoBehaviour
+public class ProjectileScript : MonoBehaviour, IPoolableObject
 {
+    [SerializeField] int poolingIndex;
+    public void SetPoolingIndex(int index) { poolingIndex = index; }
+    public int GetPoolingIndex { get { return poolingIndex; } }
+
     private void Reset()
     {
 
@@ -42,6 +46,15 @@ public class ProjectileScript : MonoBehaviour
         damageTag = dmgTag;
 
         TurnRendererToward(shootDirection);
+
+        if (damageTag == DamageTag.Enemy)
+            spriteRenderer.color = Color.red;
+        else if (damageTag == DamageTag.Player)
+            spriteRenderer.color = Color.green;
+        else
+            spriteRenderer.color = Color.white;
+
+        gameObject.SetActive(true);
     }
 
     private void Update()
@@ -73,7 +86,7 @@ public class ProjectileScript : MonoBehaviour
 
     public virtual void OnProjectileLifetimeEnded()
     {
-        Destroy(gameObject);
+        ReturnObjectToPool();
     }
 
     [Header("References")]
@@ -93,12 +106,46 @@ public class ProjectileScript : MonoBehaviour
         if (receiver.GetDamageTag != damageTag || receiver.GetDamageTag == DamageTag.Environment || damageTag == DamageTag.Environment)
         {
             receiver.Damage(projectileDamages);
-            Destroy(gameObject);
+            ReturnObjectToPool();
         }
     }
 
     public void HitWall(Wall wall)
     {
-        Destroy(gameObject);
+        ReturnObjectToPool();
     }
+
+    #region Pooling
+    public bool CheckIfEnteredScreen()
+    {
+        return true;
+    }
+
+    public bool CheckIfScreenKill()
+    {
+        return false;
+    }
+
+    public void SetUpOnPoolInstantiation(int poolIndex)
+    {
+        gameObject.SetActive(false);
+        poolingIndex = poolIndex;
+    }
+
+    public void ResetPoolableObject()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public System.Action<ProjectileScript> OnReturnToPool;
+
+    public void ReturnObjectToPool()
+    {
+        gameObject.SetActive(false);
+        if (OnReturnToPool != null)
+            OnReturnToPool(this);
+        else
+            Destroy(gameObject);
+    }
+    #endregion
 }

@@ -21,21 +21,33 @@ public class ShootingSystem
     }
 
     ShootParameters shootParameters;
-    WeaponScript weapon;
+    [HideInInspector] [SerializeField] WeaponScript weapon;
 
     TimerSystem cadenceTimerSystem;
     TimerSystem serialShotTimerSystem;
 
-    public void SetUp(DamageTag dmgTag)
+    public void SetUp(DamageTag dmgTag, bool instantiateWeapon)
     {
         shootParameters = weaponParameters.GetShootParameters;
         cadenceTimerSystem = new TimerSystem(shootParameters.GetShootCadence, null);
 
         serialShotTimerSystem = new TimerSystem(shootParameters.GetTimeBetweenEachSerialShot, EndShooting, shootParameters.GetNumberOfSerialShots - 1, Shoot);
 
-        weapon = Object.Instantiate(weaponParameters.GetWeaponPrefab, weaponsParent);
+        if (instantiateWeapon)
+            InstantiateWeapon();
 
         damageTag = dmgTag;
+    }
+
+    public void InstantiateWeapon()
+    {
+        weapon = Object.Instantiate(weaponParameters.GetWeaponPrefab, weaponsParent);
+    }
+
+    public void Reset()
+    {
+        cadenceTimerSystem.EndTimer();
+        serialShotTimerSystem.EndTimer();
     }
 
     public void OnInputPressed()

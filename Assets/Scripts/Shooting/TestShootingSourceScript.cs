@@ -8,7 +8,7 @@ public class TestShootingSourceScript : MonoBehaviour
 
     private void Start()
     {
-        shootingSystem.SetUp(DamageTag.Environment);
+        shootingSystem.SetUp(DamageTag.Environment, false);
     }
 
     private void Update()

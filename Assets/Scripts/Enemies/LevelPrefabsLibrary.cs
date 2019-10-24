@@ -11,7 +11,10 @@ public class LevelPrefabsLibrary : ScriptableObject
     [SerializeField] List<LevelPrefabInformations> enemyPrefabInformations = new List<LevelPrefabInformations>();
     public List<LevelPrefabInformations> GetEnemyPrefabInformations { get { return enemyPrefabInformations; } }
 
-    public void AddPrefabInformations(GameObject prefab, Color identifyingColor)
+    [SerializeField] List<LevelPrefabInformations> projectilePrefabInformations = new List<LevelPrefabInformations>();
+    public List<LevelPrefabInformations> GetProjectilePrefabInformations { get { return projectilePrefabInformations; } }
+
+    public void AddEnemyPrefabInformations(GameObject prefab, Color identifyingColor)
     {
         enemyPrefabInformations.Add(new LevelPrefabInformations(prefab, identifyingColor));
     }

@@ -25,6 +25,11 @@ public class SpaceShipMovementSystem
         barellRollCurve = barellRollValues.GetBarellRollCurve;
     }
 
+    public void Reset()
+    {
+        currentMovementVector = Vector2.zero;
+    }
+
     Vector2 currentMovementVector;
     public Vector2 GetCurrentVelocity { get { return currentMovementVector * Time.deltaTime; } }
 

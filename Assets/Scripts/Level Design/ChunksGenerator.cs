@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChunksGenerator : MonoBehaviour
 {
+    PoolingManager poolingManager;
+
     LevelPrefabsLibrary prefabsLibrary;
     Dictionary<int, LevelPrefabInformations> prefabsDictionnary;
     public void ComposePrefabsDictionary()
@@ -44,44 +46,67 @@ public class ChunksGenerator : MonoBehaviour
         ComposePrefabsDictionary();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            GenerateChunkAtPos(prefabsDictionnary, chunks[Random.Range(0, chunks.Length)], testPosition.position);
-        }
+        poolingManager = GameManager.gameManager.GetPoolingManager;
     }
 
-    public static void GenerateChunkAtPos(Dictionary<int, LevelPrefabInformations> prefabsDictionnary, LevelChunkData chunk, Vector3 pivotPosition)
+    private void Update()
+    {
+        /*if (Input.GetKeyDown(KeyCode.T))
+        {
+            GenerateChunkAtPos(poolingManager, chunks[Random.Range(0, chunks.Length)], testPosition.position, null);
+        }*/
+    }
+
+    public void CreateNewChunk(Vector3 pivotPosition, Transform chunkEndMark)
+    {
+        LevelChunkData chunk = chunks[Random.Range(0, chunks.Length)];
+        GenerateChunkAtPos(poolingManager, chunk, pivotPosition, chunkEndMark);
+    }
+
+    public static void GenerateChunkAtPos(PoolingManager poolingManager, LevelChunkData chunk, Vector3 pivotPosition, Transform chunkEndMark)
     {
         Vector3 currentInstantiationPos = pivotPosition;
-        LevelPrefabInformations currentPrefabInfos = null;
 
         List<List<int>> chunkTab = chunk.ListIntoTab(chunk.GetChunkContent);
 
         int numberOfLines = chunkTab.Count;
         int numberOfColumns = numberOfLines > 0 ? chunkTab[0].Count : 9;
 
+        if(chunkEndMark != null)
+        {
+            chunkEndMark.position = currentInstantiationPos + Vector3.up * chunkTab.Count;
+        }
+
         for (int y = 0; y < chunkTab.Count; y++)
         {
             List<int> line = chunkTab[y];
-            for (int x = 0; x < chunkTab.Count; x++)
+            for (int x = 0; x < line.Count; x++)
             {
                 int prefabIndex = line[x];
                 if (prefabIndex == 0)
                     continue;
 
-                if (!prefabsDictionnary.ContainsKey(prefabIndex))
-                    continue;
-
                 currentInstantiationPos.x = pivotPosition.x - numberOfColumns/2 + x;
-                currentInstantiationPos.y = pivotPosition.y + numberOfLines - y;
+                currentInstantiationPos.y = pivotPosition.y + numberOfLines - y + 0.5f;
 
-                currentPrefabInfos = prefabsDictionnary[prefabIndex];
-
-                Instantiate(currentPrefabInfos.elementPrefab, currentInstantiationPos, Quaternion.identity);
-
-                currentPrefabInfos = null;
+                if(prefabIndex >= 100 && prefabIndex < 200)
+                {
+                    Obstacle newObstacle = poolingManager.GetObstacleFromPool(prefabIndex);
+                    if(newObstacle != null)
+                    {
+                        newObstacle.transform.position = currentInstantiationPos;
+                    }
+                }
+                else if (prefabIndex >= 200 && prefabIndex < 300)
+                {
+                    EnemySpaceShipScript newEnemy = poolingManager.GetEnemyFromPool(prefabIndex);
+                    if (newEnemy != null)
+                    {
+                        newEnemy.transform.position = currentInstantiationPos;
+                    }
+                }
             }
         }
     }

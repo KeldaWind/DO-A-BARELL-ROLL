@@ -122,7 +122,7 @@ public class EnemyCreationWindow : EditorWindow
                     return;
                 }
 
-                prefabsLibrary.AddPrefabInformations(newEnemyPrefab.gameObject, enemyCreationParameters.enemyIdentifyingColor);
+                prefabsLibrary.AddEnemyPrefabInformations(newEnemyPrefab.gameObject, enemyCreationParameters.enemyIdentifyingColor);
                 EditorUtility.SetDirty(prefabsLibrary);
                 #endregion
             }
