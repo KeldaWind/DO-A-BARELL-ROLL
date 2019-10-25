@@ -14,7 +14,7 @@ public class DamageableComponent : MonoBehaviour
     int currentLifeAmount;
     public int GetCurrentLifeAmount { get { return currentLifeAmount; } }
 
-    public System.Action OnLifeAmountChanged;
+    public System.Action<int, int, int> OnLifeAmountChanged;
     public System.Action OnLifeAmountReachedZero;
 
     public void SetUp(DamageTag dmgTag)
@@ -32,7 +32,7 @@ public class DamageableComponent : MonoBehaviour
     {
         currentLifeAmount -= Mathf.Abs(damageValue);
 
-        OnLifeAmountChanged?.Invoke();
+        OnLifeAmountChanged?.Invoke(damageValue, currentLifeAmount, maxLife);
 
         if(currentLifeAmount <=0)
         {

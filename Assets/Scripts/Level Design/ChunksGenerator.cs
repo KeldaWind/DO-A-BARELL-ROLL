@@ -51,14 +51,6 @@ public class ChunksGenerator : MonoBehaviour
         poolingManager = GameManager.gameManager.GetPoolingManager;
     }
 
-    private void Update()
-    {
-        /*if (Input.GetKeyDown(KeyCode.T))
-        {
-            GenerateChunkAtPos(poolingManager, chunks[Random.Range(0, chunks.Length)], testPosition.position, null);
-        }*/
-    }
-
     public void CreateNewChunk(Vector3 pivotPosition, Transform chunkEndMark)
     {
         LevelChunkData chunk = chunks[Random.Range(0, chunks.Length)];

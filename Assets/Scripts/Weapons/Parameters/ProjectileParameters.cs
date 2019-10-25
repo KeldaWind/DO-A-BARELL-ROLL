@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "DO A BARELL ROLL/Weapons/Projectile Parameters", fileName = "NewProjectileParameters", order = 0)]
+[CreateAssetMenu(menuName = "DO A BARELL ROLL Scriptables/Weapons/Projectile Parameters", fileName = "NewProjectileParameters", order = 0)]
 public class ProjectileParameters : ScriptableObject
 {
     public MinMaxFloat GetProjectileSpeed { get { return projectileSpeed; } }

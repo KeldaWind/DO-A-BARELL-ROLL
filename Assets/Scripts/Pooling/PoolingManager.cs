@@ -13,17 +13,54 @@ public class PoolingManager : MonoBehaviour
     Dictionary<int, Queue<Obstacle>> obstaclePoolsDictionnary;
     Dictionary<int, Queue<ProjectileScript>> projectilesPoolsDictionnary;
 
+    [ContextMenu("Clear")]
+    private void Clear()
+    {
+        foreach (EnemyPool pool in enemiesPools)
+        {
+            Debug.Log(pool);
+
+            pool.DestroyPoolParent();
+            pool.DestroyPoolObjects();
+        }
+
+        foreach (ObstaclePool pool in obstaclesPools)
+        {
+            pool.DestroyPoolParent();
+            pool.DestroyPoolObjects();
+        }
+
+        foreach (ProjectilePool pool in projectilesPools)
+        {
+            pool.DestroyPoolParent();
+            pool.DestroyPoolObjects();
+        }
+
+        enemiesPools = new List<EnemyPool>();
+        obstaclesPools = new List<ObstaclePool>();
+        projectilesPools = new List<ProjectilePool>();
+    }
+
     [ContextMenu("AssignPoolValuesWithLibrary")]
     public void AssignPoolValuesWithLibrary()
     {
         foreach (EnemyPool pool in enemiesPools)
+        {
             pool.DestroyPoolParent();
+            pool.DestroyPoolObjects();
+        }
 
         foreach (ObstaclePool pool in obstaclesPools)
+        {
             pool.DestroyPoolParent();
+            pool.DestroyPoolObjects();
+        }
 
         foreach (ProjectilePool pool in projectilesPools)
+        {
             pool.DestroyPoolParent();
+            pool.DestroyPoolObjects();
+        }
 
         enemiesPools = new List<EnemyPool>();
         obstaclesPools = new List<ObstaclePool>();
@@ -292,7 +329,8 @@ public abstract class Pool
 {
     public void DestroyPoolParent()
     {
-        Object.DestroyImmediate(poolParent.gameObject);
+        if (poolParent != null)
+            Object.DestroyImmediate(poolParent.gameObject);
     }
 
     public int elementLibraryIndex;
@@ -309,7 +347,8 @@ public class EnemyPool : Pool
     public void DestroyPoolObjects()
     {
         foreach (EnemySpaceShipScript enemy in instantiatedObjects)
-            Object.DestroyImmediate(enemy.gameObject);
+            if (enemy != null) 
+                Object.DestroyImmediate(enemy.gameObject);
 
         instantiatedObjects = new List<EnemySpaceShipScript>();
     }
@@ -324,7 +363,8 @@ public class ObstaclePool : Pool
     public void DestroyPoolObjects()
     {
         foreach (Obstacle obstacle in instantiatedObjects)
-            Object.DestroyImmediate(obstacle.gameObject);
+            if (obstacle != null)
+                Object.DestroyImmediate(obstacle.gameObject);
 
         instantiatedObjects = new List<Obstacle>();
     }
@@ -339,7 +379,8 @@ public class ProjectilePool : Pool
     public void DestroyPoolObjects()
     {
         foreach (ProjectileScript projectile in instantiatedObjects)
-            Object.DestroyImmediate(projectile.gameObject);
+            if (projectile != null)
+                Object.DestroyImmediate(projectile.gameObject);
 
         instantiatedObjects = new List<ProjectileScript>();
     }

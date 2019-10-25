@@ -26,6 +26,8 @@ public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
 
         screenKillTransform = GameManager.gameManager.GetGameScroller.GetKillTransform;
         screenEnterTransform = GameManager.gameManager.GetGameScroller.GetEnterTransform;
+
+        GameManager.gameManager.AddActionToOnGameOver(StopBehaviour);
     }
 
     public override void ResetValues()
@@ -38,6 +40,9 @@ public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
 
     public override void UpdateSpaceShip()
     {
+        if (behaviourStopped)
+            return;
+
         if (!enteredScreen)
             enteredScreen = CheckIfEnteredScreen();
 
@@ -106,6 +111,12 @@ public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
     {
         ReturnObjectToPool();
         GameManager.gameManager.GetQuestCheckingManager.IncreamentNumberOfKilledEnemies();
+    }
+
+    bool behaviourStopped;
+    public void StopBehaviour()
+    {
+        behaviourStopped = true;
     }
 }
 

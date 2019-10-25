@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Player Ship Inputs", menuName = "DO A BARELL ROLL/Player/Inputs")]
+[CreateAssetMenu(fileName = "Player Ship Inputs", menuName = "DO A BARELL ROLL Scriptables/Player/Inputs")]
 public class PlayerShipInputs : ScriptableObject
 {
     [Header("Movement Inputs")]

@@ -50,8 +50,10 @@ public class WeaponSetCreationWindow : EditorWindow
                 if (createFolder)
                 {
                     string folderCreationPath = finalFolderPath;
-                    finalFolderPath = AssetDatabase.GenerateUniqueAssetPath(finalFolderPath + "/" + newWeaponName + "Set");
-                    AssetDatabase.CreateFolder(folderCreationPath, newWeaponName + "Set");
+                    finalFolderPath = AssetDatabase.GenerateUniqueAssetPath(finalFolderPath + "/" + newWeaponName + " Set");
+                    
+                    Debug.Log("Create Folder \"" + newWeaponName + "Set" + "\" in \"" + folderCreationPath + "\"");
+                    AssetDatabase.CreateFolder(folderCreationPath, newWeaponName + " Set");
                 }
 
                 WeaponScript newWeaponPrefab = null;

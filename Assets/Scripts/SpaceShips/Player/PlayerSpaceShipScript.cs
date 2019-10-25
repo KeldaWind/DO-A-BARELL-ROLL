@@ -74,7 +74,7 @@ public class PlayerSpaceShipScript : SpaceShipScript
     public override void Die()
     {
         base.Die();
-        GameManager.gameManager.GetQuestCheckingManager.DebugStats();
+        GameManager.gameManager.GameOver();
     }
 
 }

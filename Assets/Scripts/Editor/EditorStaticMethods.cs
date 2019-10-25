@@ -8,13 +8,13 @@ public class EditorStaticMethods
     #region Folder Management
     public static void ShowFolderAndAskIfCreateNew(ref DefaultAsset selectedFolderRef, ref bool createFolder)
     {
-        selectedFolderRef = EditorGUILayout.ObjectField("Target Folder", selectedFolderRef, typeof(DefaultAsset)) as DefaultAsset;
+        selectedFolderRef = EditorGUILayout.ObjectField("Target Folder", selectedFolderRef, typeof(DefaultAsset), false) as DefaultAsset;
         createFolder = EditorGUILayout.Toggle("Create New Folder", createFolder);
     }
     #endregion
 
     #region Weapons Creation
-    [MenuItem("Assets/Create/DO A BARREL ROLL/Create Weapon Set", priority = 0)]
+    [MenuItem("Assets/Create/DO A BARREL ROLL Creation Tools/Create Weapon Set", priority = 0)]
     public static void CreateWeaponSetInSelectedFolder()
     {
         Object selectedObject = Selection.activeObject;
@@ -72,7 +72,7 @@ public class EditorStaticMethods
     #endregion
 
     #region Enemies Creation
-    [MenuItem("Assets/Create/DO A BARREL ROLL/Create Enemy", priority = 0)]
+    [MenuItem("Assets/Create/DO A BARREL ROLL Creation Tools/Create Enemy", priority = 0)]
     public static void CreateEnemyInSelectedFolder()
     {
         Object selectedObject = Selection.activeObject;
@@ -90,6 +90,42 @@ public class EditorStaticMethods
         Object.DestroyImmediate(enemy.gameObject);
 
         return prefab.GetComponent<EnemySpaceShipScript>();
+    }
+    #endregion
+
+    #region Quests Creation
+    [MenuItem("Assets/Create/DO A BARREL ROLL Creation Tools/Create Quests", priority = 0)]
+    public static void CreateQuestsInSelectedFolder()
+    {
+        Object selectedObject = Selection.activeObject;
+
+        string enemyCreationPath = selectedObject.GetFolderPath();
+
+        QuestsCreationWindow.OpenWindow(enemyCreationPath);
+    }
+
+    public static void CreateOrReplaceQuestInFolder(string folderPath, Quest quest)
+    {
+        //string questPath = AssetDatabase.GenerateUniqueAssetPath(folderPath + "/" + quest.questName + ".asset");
+        string questPath = folderPath + "/" + quest.questName + ".asset";
+
+        Quest questAtPath = AssetDatabase.LoadAssetAtPath(questPath, typeof(Quest)) as Quest;
+
+        if (questAtPath != null)
+        {
+            questAtPath.questName = quest.questName;
+            questAtPath.questDescription = quest.questDescription;
+            questAtPath.questType = quest.questType;
+            questAtPath.questRealisationType = quest.questRealisationType;
+            questAtPath.valueToReach = quest.valueToReach;
+
+            EditorUtility.SetDirty(questAtPath);
+        }
+        else
+        {
+            AssetDatabase.CreateAsset(quest, questPath);
+            EditorUtility.SetDirty(quest);
+        }
     }
     #endregion
 

@@ -10,7 +10,7 @@ public class GameScroller : MonoBehaviour
     [SerializeField] ChunksGenerator chunksGenerator = default;
     [SerializeField] Transform chunkEndMark = default;
     [SerializeField] float spaceBetweenTwoChunks;
-    bool CanCreateANewChunk { get { return chunkEndMark.position.y < enterTransform.position.y - spaceBetweenTwoChunks; } }
+    bool CanCreateANewChunk { get { return chunkEndMark.position.y < enterTransform.position.y - spaceBetweenTwoChunks && currentScrollerState == ScrollerState.Moving; } }
 
     PlayerSpaceShipScript player = default;
     /// <summary>
@@ -29,7 +29,7 @@ public class GameScroller : MonoBehaviour
     [SerializeField] float scrollingMaxSpeed = 2;
     [SerializeField] float scrollerAcceleration = 2;
     [SerializeField] float scrollerDesceleration = 2;
-    [SerializeField] ScrollerState currentScrollerState = ScrollerState.Moving;
+    ScrollerState currentScrollerState = ScrollerState.Stopped;
     float currentScrollingSpeed;
 
     [Header("Rendering")]

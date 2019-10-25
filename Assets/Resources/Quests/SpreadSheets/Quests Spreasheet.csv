@@ -1,0 +1,14 @@
+﻿Name;Description;Quest Type;Realisation Type;Value to Reach;Set
+Do a Barell Roll !;Do your first Barell Roll ! ;DoBarellRoll;InOneGame;1;Get Started
+They shot first !;Kill your first enemy ! ;KillEnemies;InOneGame;1;Get Started
+First Steps;Run your first Kilometer !;TravelDistance;InOneGame;1;Get Started
+Let's Kill Tonight;Kill 10 enemies in a single Game;KillEnemies;InOneGame;10;Live and Learn
+See me barell Rolling;Make 10 barell rolls in a single Game;DoBarellRoll;InOneGame;10;Live and Learn
+Go further;Run 30 km in a single Game;TravelDistance;InOneGame;30;Live and Learn
+Hunting Trophee;Kill 25 enemies;KillEnemies;OverMultipleGames;25;Live and Learn
+Car Counter;Run 150 km ;TravelDistance;OverMultipleGames;150;Live and Learn
+Motion Sickness;Do 30 Barell Rolls;DoBarellRoll;OverMultipleGames;30;Live and Learn
+Rampage;Kill 40 enemies in a Single Game;KillEnemies;InOneGame;40;To the next Level
+I SAID DO A BARELL ROLL;Do 25 Barell Rolls in a Single Game;DoBarellRoll;InOneGame;25;To the next Level
+I may need some Fuel...;Run 300 km ;TravelDistance;OverMultipleGames;300;To the next Level
+Hitman;Kill 100 enemies;KillEnemies;OverMultipleGames;100;To the next Level
