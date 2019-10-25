@@ -150,7 +150,7 @@ public class SpaceShipMovementSystem
     {
         get
         {
-            return Vector3.Lerp(barellRollStartPosition, barellRollEndPosition, barellRollCurve.Evaluate(barellRollDurationSystem.GetTimerCoefficient));
+            return Vector3.Lerp(barellRollStartPosition, barellRollEndPosition, GetBarellRollProgression);
         }
     }
 
@@ -160,6 +160,8 @@ public class SpaceShipMovementSystem
 
         return GetCurrentBarellRollPosition;
     }
+
+    public float GetBarellRollProgression { get { return barellRollCurve.Evaluate(barellRollDurationSystem.GetTimerCoefficient); } }
 
     public void EndBarellRoll()
     {

@@ -105,7 +105,6 @@ public class QuestsIntersceneManagement
         {
             if (currentQuests[i].Done)
             {
-                Debug.Log("Remove : " + currentQuests[i].questName);
                 currentQuests[i] = null;
             }
         }

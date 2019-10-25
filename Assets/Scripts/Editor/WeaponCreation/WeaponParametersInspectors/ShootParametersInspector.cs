@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CanEditMultipleObjects]
 [CustomEditor(typeof(ShootParameters))]
 public class ShootParametersInspector : Editor
 {
@@ -33,13 +32,19 @@ public class ShootParametersInspector : Editor
         EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), projectilePrefabAttribute);
 
         SerializedProperty cadenceProperty = serializedParameters.FindProperty("shootCadence");
-        EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), cadenceProperty);
+        EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), cadenceProperty, new GUIContent("Shoot Cadence", "The reloading time needed after a shot to be able to shoot again"));
+        if (cadenceProperty.floatValue < 0)
+            cadenceProperty.floatValue = 0;
 
         SerializedProperty numberOfProjectilesPerShotProperty = serializedParameters.FindProperty("numberOfProjectilesPerShot");
-        EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), numberOfProjectilesPerShotProperty);
-        
+        EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), numberOfProjectilesPerShotProperty, new GUIContent("Number of Projectiles per Shot", "The number of projectile that will be instantiated on shot by each shoot origins of the weapon. Generaly of one except for shotguns"));
+        if (numberOfProjectilesPerShotProperty.intValue < 1)
+            numberOfProjectilesPerShotProperty.intValue = 1;
+
         SerializedProperty imprecisionAngleProperty = serializedParameters.FindProperty("imprecisionAngle");
-        EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), imprecisionAngleProperty);
+        EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), imprecisionAngleProperty, new GUIContent("Imprecision Angle", "The angle of the cone in which the projectile direction will be randomly picked on shot. Set low for precise shots, set high for spray"));
+        if (imprecisionAngleProperty.floatValue < 0)
+            imprecisionAngleProperty.floatValue = 0;
         #endregion
 
         #region Serial Shots
@@ -47,17 +52,23 @@ public class ShootParametersInspector : Editor
         GUI.Label(EditorStaticMethods.GetIndentedControlRect(indentValue), "Serial Shots", EditorStyles.boldLabel);
 
         SerializedProperty numberOfSerialShotsProperty = serializedParameters.FindProperty("numberOfSerialShots");
-        bool isSerialShot = EditorGUI.Toggle(EditorStaticMethods.GetIndentedControlRect(indentValue), "Is serial Shot", numberOfSerialShotsProperty.intValue > 1);
+        bool isSerialShot = EditorGUI.Toggle(EditorStaticMethods.GetIndentedControlRect(indentValue), new GUIContent("Is Serial Shots", "Set true if you want a burst shot"), numberOfSerialShotsProperty.intValue > 1);
 
         if (isSerialShot)
         {
             if (numberOfSerialShotsProperty.intValue < 2)
                 numberOfSerialShotsProperty.intValue = 3;
 
-            EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), numberOfSerialShotsProperty);
+            EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), numberOfSerialShotsProperty, new GUIContent("Number of Shots", "The number of shots that will be done through the burst shot"));
 
             SerializedProperty timeBetweenEachSerialShotProperty = serializedParameters.FindProperty("timeBetweenEachSerialShot");
-            EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), timeBetweenEachSerialShotProperty);
+            EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), timeBetweenEachSerialShotProperty, new GUIContent("Time between each Shot", "The time between two shots of the burst shot"));
+
+            if (numberOfSerialShotsProperty.intValue < 2)
+                numberOfSerialShotsProperty.intValue = 2;
+
+            if (timeBetweenEachSerialShotProperty.floatValue < 0)
+                timeBetweenEachSerialShotProperty.floatValue = 0;
         }
         else
         {

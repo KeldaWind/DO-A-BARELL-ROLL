@@ -188,8 +188,6 @@ public class ShootingSystem
         currentWeapon = GetSelectedWeaponObject;
         currentShootParameters = GetSelectedShootParameters;
 
-        Debug.Log(GetSelectedWeaponParameters.weaponName);
-
         if (cadenceTimerSystem != null)
             cadenceTimerSystem.ChangeTimerValue(currentShootParameters.GetShootCadence);
 

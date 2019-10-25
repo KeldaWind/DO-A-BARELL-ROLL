@@ -19,7 +19,13 @@ public class SpaceShipScript : MonoBehaviour
         else
         {
             transform.position = movementSystem.UpdateBarellRollAndGetPosition();
+            transform.eulerAngles = Vector3.Lerp(Vector3.zero, new Vector3(0, 359.9f), movementSystem.GetBarellRollProgression);
         }
+    }
+
+    public void ResetRotation()
+    {
+        transform.rotation = Quaternion.identity;
     }
     #endregion
 
@@ -100,6 +106,7 @@ public class SpaceShipScript : MonoBehaviour
         movementSystem.SetUp();
         movementSystem.OnBarellRollStart += SetInvulnerable;
         movementSystem.OnBarellRollEnd += SetVulnerable;
+        movementSystem.OnBarellRollEnd += ResetRotation;
 
         shootingSystem.SetUp(damageTag, false);
 

@@ -10,9 +10,10 @@ public enum MinMaxMode
 [System.Serializable]
 public struct MinMaxFloat
 {
-    [SerializeField] MinMaxMode mode;
-    [SerializeField] float minValue;
-    [SerializeField] float maxValue;
+    public MinMaxMode mode;
+    public float minValue;
+
+    public float maxValue;
 
     public MinMaxFloat(float min, float max)
     {

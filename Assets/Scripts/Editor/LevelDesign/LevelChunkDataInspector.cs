@@ -280,7 +280,7 @@ public class LevelChunkDataInspector : Editor
                 labelStyle.fontSize = (int)(tileWidth * 0.2f);
 
                 Color tileColor = Color.white;
-                string tileName = "Empty";
+                string tileName = "/";
 
                 if (prefabsDictionnary.ContainsKey(tileValue))
                 {

@@ -21,7 +21,7 @@ public class WeaponSetCreationWindow : EditorWindow
     string newWeaponName = "NewWeapon";
     bool createFolder = true;
 
-    bool createLinkedObject;
+    bool createLinkedObject = true;
     WeaponCreationParameters newWeaponCreationParameters = new WeaponCreationParameters(true);
     public void Init(string folderPath)
     {

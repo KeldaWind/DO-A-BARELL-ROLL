@@ -14,12 +14,10 @@ public class PoolingManager : MonoBehaviour
     Dictionary<int, Queue<ProjectileScript>> projectilesPoolsDictionnary;
 
     [ContextMenu("Clear")]
-    private void Clear()
+    public void Clear()
     {
         foreach (EnemyPool pool in enemiesPools)
         {
-            Debug.Log(pool);
-
             pool.DestroyPoolParent();
             pool.DestroyPoolObjects();
         }

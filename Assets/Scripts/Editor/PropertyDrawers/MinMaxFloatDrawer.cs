@@ -29,7 +29,7 @@ public class MinMaxFloatDrawer : PropertyDrawer
         Rect maxRect= new Rect(position.x + spaceBewteen * 2 + labelRect.width + minRect.width, position.y, minMaxWidth, lineHeight);
         Rect modeRect= new Rect(position.x + labelRect.width + minRect.width + (minMaxMode == MinMaxMode.RandomBetweenMinAndMax ? maxRect.width + spaceBewteen * 3 : spaceBewteen * 2), position.y, modeWidth, lineHeight);
         
-        GUI.Label(labelRect, label.text);
+        GUI.Label(labelRect, label);
 
         SerializedProperty min = property.FindPropertyRelative("minValue");
         EditorGUI.PropertyField(minRect, min, GUIContent.none);

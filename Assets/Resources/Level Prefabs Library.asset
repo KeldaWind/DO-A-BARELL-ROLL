@@ -17,9 +17,6 @@ MonoBehaviour:
     elementPrefab: {fileID: 48600435975603269, guid: 5ac90cc6c0524fc44ab4cf52fc2c861a,
       type: 3}
     elementAttributedColor: {r: 0, g: 0, b: 0, a: 1}
-  - elementName: 
-    elementPrefab: {fileID: 0}
-    elementAttributedColor: {r: 1, g: 0, b: 0, a: 1}
   enemyPrefabInformations:
   - elementName: Hunter
     elementPrefab: {fileID: 8061416898681612591, guid: e6a62ba5540109b4ca821db1c718d2a8,
@@ -37,4 +34,4 @@ MonoBehaviour:
   - elementName: Base Projectile
     elementPrefab: {fileID: 2976134964611447167, guid: 3dd41dea45add644584c72fa3782b244,
       type: 3}
-    elementAttributedColor: {r: 0, g: 0, b: 0, a: 0}
+    elementAttributedColor: {r: 1, g: 1, b: 1, a: 1}

@@ -20,7 +20,7 @@ MonoBehaviour:
     canDoABarellRool: 1
     barellRollCooldown: 0.6
     barellRollDistance: 3
-    barellRollDuration: 0.12
+    barellRollDuration: 0.16
     barellRollCurve:
       serializedVersion: 2
       m_Curve:
