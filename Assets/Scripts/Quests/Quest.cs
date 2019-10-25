@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Quest", menuName = "DO A BARELL ROLL Scriptables/Quests/New Quest")]
+[CreateAssetMenu(fileName = "New Quest", menuName = "DO A BARELL ROLL/Scriptables/Quests/New Quest")]
 public class Quest : ScriptableObject
 {
     public void SetUpWithTab(string name, string description, QuestType type, QuestRealisationType realisationType, float valToReach)
@@ -30,8 +30,6 @@ public class Quest : ScriptableObject
     public bool AddCurrentValue(float addedValue)
     {
         currentValue += addedValue;
-
-        Debug.Log(questName + " : " + currentValue + "/" + valueToReach);
 
         return currentValue >= valueToReach;
     }

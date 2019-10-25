@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Prefabs Library", menuName = "DO A BARELL ROLL Scriptables/Prefab Library")]
+[CreateAssetMenu(fileName = "Prefabs Library", menuName = "DO A BARELL ROLL/Scriptables/Prefab Library")]
 public class LevelPrefabsLibrary : ScriptableObject
 {
     [SerializeField] List<LevelPrefabInformations> obstaclesPrefabInformations = new List<LevelPrefabInformations>();

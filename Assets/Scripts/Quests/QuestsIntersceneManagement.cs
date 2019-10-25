@@ -6,19 +6,27 @@ using UnityEngine;
 public class QuestsIntersceneManagement 
 {
     [Header("Set Up")]
-    [SerializeField] List<QuestSet> allQuestSets = new List<QuestSet>();
-    [SerializeField] int currentSetIndex = 0;
+    List<QuestSet> allQuestSets = new List<QuestSet>();
+    int currentSetIndex = 0;
+    public void LoadLibrary()
+    {
+        Object questsLibraryObject = Resources.Load("Quests/Quests Library");
+        QuestsLibrary questsLibrary = questsLibraryObject != null ? questsLibraryObject as QuestsLibrary : null;
+
+        if (questsLibrary != null)
+            allQuestSets = questsLibrary.GetQuestsSetsCopy;
+    }
 
     [Space(16)]
 
-    [Header("Progression")]
-    [SerializeField] Quest[] currentQuests = new Quest[3];
+    //[Header("Progression")]
+    /*[SerializeField] */Quest[] currentQuests = new Quest[3];
     public Quest[] GetCurrentQuests { get { return currentQuests; } }
 
-    [SerializeField] List<Quest> finishedQuests = new List<Quest>();
+    /*[SerializeField]*/ List<Quest> finishedQuests = new List<Quest>();
 
-    [SerializeField] List<WeaponParameters> unlockedWeapons = new List<WeaponParameters>();
-
+    /*[SerializeField] */List<WeaponParameters> unlockedWeapons = new List<WeaponParameters>();
+    public List<WeaponParameters> GetAllUnlockedWeapons { get { return unlockedWeapons; } }
 
     public void CheckForFinishedQuests(float travelledDistance, int numberOfKilledEnemies, int numberOfBarellRolls)
     {
@@ -59,6 +67,9 @@ public class QuestsIntersceneManagement
 
     public void AssignNewQuests()
     {
+        if (currentSetIndex == allQuestSets.Count)
+            return;
+
         for (int i = 0; i < currentQuests.Length; i++) 
         {
             Quest quest = currentQuests[i];
@@ -111,11 +122,4 @@ public class QuestsIntersceneManagement
                 quest.ResetCurrentValue();
         }
     }
-}
-
-[System.Serializable]
-public struct QuestSet
-{
-    public string questSetName;
-    public List<Quest> allSetQuests;
 }

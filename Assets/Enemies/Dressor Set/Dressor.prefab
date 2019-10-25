@@ -51,8 +51,9 @@ MonoBehaviour:
       type: 2}
   shootingSystem:
     weaponsParent: {fileID: 1257077185100103986}
-    weaponParameters: {fileID: 11400000, guid: 668d2bd65ebb1984bba988dcb887702b, type: 2}
-    weapon: {fileID: 0}
+    baseWeaponParameters: {fileID: 11400000, guid: 668d2bd65ebb1984bba988dcb887702b,
+      type: 2}
+    currentWeapon: {fileID: 0}
   damageTag: 1
   relatedDamageableComponent: {fileID: 4868113270771969418}
   poolingIndex: 0

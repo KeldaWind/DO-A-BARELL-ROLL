@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed9edae3926d1947b282effc5128798, type: 3}
+  m_Name: Quests Library
+  m_EditorClassIdentifier: 
+  allQuestSets:
+  - questSetName: Get Started
+    allSetQuests:
+    - {fileID: 11400000, guid: b0be732d5ff7b5048ad863a12cf1e4e8, type: 2}
+    - {fileID: 11400000, guid: d4eab4a8d2948dd4789c897318295c40, type: 2}
+    - {fileID: 11400000, guid: 16781c189e0232b439b234e8d7a6d69f, type: 2}
+  - questSetName: Live and Learn
+    allSetQuests:
+    - {fileID: 11400000, guid: bf57887f3f424f544aec0dfaf583f657, type: 2}
+    - {fileID: 11400000, guid: 68f5f9dea1eef754992ff204336921b3, type: 2}
+    - {fileID: 11400000, guid: 7cdc966441471184983d070e90e438e2, type: 2}
+    - {fileID: 11400000, guid: a706b842779f80543af8874ddea4d457, type: 2}
+    - {fileID: 11400000, guid: ac63731de4dfe574db5f78907d80fe33, type: 2}
+    - {fileID: 11400000, guid: cee40e6cf8d1e064291c682716045433, type: 2}
+  - questSetName: To the next Level
+    allSetQuests:
+    - {fileID: 11400000, guid: d08e70f93faf1d94d930eb20c05e0fdd, type: 2}
+    - {fileID: 11400000, guid: 3331fe359dd11ad4396525fe73b959a5, type: 2}
+    - {fileID: 11400000, guid: 55091b1e5009d0647b66be9d578c68d5, type: 2}
+    - {fileID: 11400000, guid: 799c7d02b6db0604280c681ddbb6764a, type: 2}

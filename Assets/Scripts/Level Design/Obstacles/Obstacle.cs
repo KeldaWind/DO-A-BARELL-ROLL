@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Obstacle : MonoBehaviour, IPoolableObject
 {
-    int poolingIndex;
+    public int poolingIndex;
     public void SetPoolingIndex(int index) { poolingIndex = index; }
     public int GetPoolingIndex { get { return poolingIndex; } }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Space Ship Movement Parameters", menuName = "DO A BARELL ROLL Scriptables/SpaceShips/Movement Parameters")]
+[CreateAssetMenu(fileName = "New Space Ship Movement Parameters", menuName = "DO A BARELL ROLL/Scriptables/SpaceShips/Movement Parameters")]
 public class SpaceShipMovementParameters : ScriptableObject
 {
     [SerializeField] SpaceShipBaseMovementValues baseMovementValues = new SpaceShipBaseMovementValues(5f);

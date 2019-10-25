@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "DO A BARELL ROLL Scriptables/Weapons/Weapon Parameters", fileName = "NewWeaponParameters", order = 0)]
+[CreateAssetMenu(menuName = "DO A BARELL ROLL/Scriptables/Weapons/Weapon Parameters", fileName = "NewWeaponParameters", order = 0)]
 public class WeaponParameters : ScriptableObject
 {
+    public string weaponName = "";
+
     public void SetShootParameters(ShootParameters shootParams)
     {
         shootParameters = shootParams;

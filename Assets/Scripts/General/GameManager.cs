@@ -67,10 +67,13 @@ public class GameManager : MonoBehaviour
         OnGameOver += playerUI.ShowGameOverPanel;
 
         playerUI.ShowStartPanel();
+        player.GetShootingSystem.OnWeaponChanged += playerUI.UpdateWeaponText;
 
         currentGameState = GameState.Starting;
 
         playerUI.OpenQuestsFrames(intersceneManagerInstance.GetQuestsIntersceneManagement.GetCurrentQuests);
+
+        player.GetShootingSystem.SetUpWeaponSets(intersceneManagerInstance.GetQuestsIntersceneManagement.GetAllUnlockedWeapons);
     }
 
     public void StartGame()

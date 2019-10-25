@@ -18,3 +18,5 @@ MonoBehaviour:
   rightBarellRollKey: 275
   frontBarellRollKey: 273
   shootKey: 32
+  nextWeaponKey: 101
+  previousWeaponKey: 97

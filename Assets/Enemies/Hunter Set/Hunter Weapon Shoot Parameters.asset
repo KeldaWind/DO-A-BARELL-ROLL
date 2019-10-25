@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8471199808687458788, guid: 3dd41dea45add644584c72fa3782b244,
     type: 3}
-  shootCadence: 0.6
+  shootCadence: 1
   numberOfProjectilesPerShot: 1
   imprecisionAngle: 0
   numberOfSerialShots: 1

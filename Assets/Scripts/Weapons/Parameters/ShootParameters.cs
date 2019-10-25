@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "DO A BARELL ROLL Scriptables/Weapons/Shoot Parameters", fileName = "NewShootParameters", order = 0)]
+[CreateAssetMenu(menuName = "DO A BARELL ROLL/Scriptables/Weapons/Shoot Parameters", fileName = "NewShootParameters", order = 0)]
 public class ShootParameters : ScriptableObject
 {
     [SerializeField] ProjectileScript projectilePrefab = default;

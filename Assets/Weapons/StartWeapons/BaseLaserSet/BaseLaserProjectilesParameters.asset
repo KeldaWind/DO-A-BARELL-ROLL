@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BaseLaserProjectilesParameters
   m_EditorClassIdentifier: 
   projectileSpeed:
-    mode: 1
+    mode: 0
     minValue: 20
     maxValue: 20
   projectileLifetime:
-    mode: 1
+    mode: 0
     minValue: 1
     maxValue: 1
   projectileSize: 0.3

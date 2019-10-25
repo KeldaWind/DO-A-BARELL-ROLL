@@ -50,13 +50,16 @@ public class PlayerSpaceShipScript : SpaceShipScript
     public override bool StartedShootInput { get { return Input.GetKeyDown(playerShipInputs.GetShootKey); } }
     public override bool IsMaintainingShootInput { get { return Input.GetKey(playerShipInputs.GetShootKey); } }
     public override bool ReleasedShootInput { get { return Input.GetKeyUp(playerShipInputs.GetShootKey); } }
+
+    public override bool PressedNextWeapon { get { return Input.GetKeyDown(playerShipInputs.GetNextWeaponKey); } }
+    public override bool PressedPreviousWeapon { get { return Input.GetKeyDown(playerShipInputs.GetPrevioustWeaponKey); } }
     #endregion
 
     public override void FirstSetUp()
     {
         base.FirstSetUp();
 
-        shootingSystem.InstantiateWeapon();
+        shootingSystem.InstantiateBaseWeapon();
 
         GetMovementSystem.OnBarellRollEnd += GameManager.gameManager.GetQuestCheckingManager.IncreamentNumberOfBarellRoll;
 

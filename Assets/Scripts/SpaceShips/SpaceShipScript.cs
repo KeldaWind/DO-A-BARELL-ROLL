@@ -37,6 +37,11 @@ public class SpaceShipScript : MonoBehaviour
             shootingSystem.OnInputMaintained();
         else if (ReleasedShootInput)
             shootingSystem.OnInputReleased();
+
+        if (PressedNextWeapon)
+            shootingSystem.NextWeapon();
+        else if (PressedPreviousWeapon)
+            shootingSystem.PreviousWeapon();
         #endregion
 
         shootingSystem.UpdateSystem();
@@ -51,6 +56,10 @@ public class SpaceShipScript : MonoBehaviour
     public virtual bool StartedShootInput { get { return false; } }
     public virtual bool IsMaintainingShootInput { get { return false; } }
     public virtual bool ReleasedShootInput { get { return false; } }
+
+    public virtual bool PressedNextWeapon { get { return false; } }
+    public virtual bool PressedPreviousWeapon { get { return false; } }
+
     #endregion
 
     #region Damages

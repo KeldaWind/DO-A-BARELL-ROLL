@@ -87,7 +87,7 @@ public class SpaceShipInspector : Editor
 
         EditorGUI.BeginChangeCheck();
 
-        WeaponParameters newWeaponParameters = (WeaponParameters)EditorGUILayout.ObjectField("Weapon Parameters", targetSpaceShip.GetShootingSystem.GetWeaponParameters, typeof(WeaponParameters), false);
+        WeaponParameters newWeaponParameters = (WeaponParameters)EditorGUILayout.ObjectField("Weapon Parameters", targetSpaceShip.GetShootingSystem.GetBaseWeaponParameters, typeof(WeaponParameters), false);
 
         if (EditorGUI.EndChangeCheck())
         {
@@ -95,7 +95,7 @@ public class SpaceShipInspector : Editor
             targetSpaceShip.GetShootingSystem.SetWeaponParameters(newWeaponParameters);
         }
 
-        WeaponParameters finalWeaponParameters = targetSpaceShip.GetShootingSystem.GetWeaponParameters;
+        WeaponParameters finalWeaponParameters = targetSpaceShip.GetShootingSystem.GetBaseWeaponParameters;
 
         if (finalWeaponParameters != null)
         {

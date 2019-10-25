@@ -30,6 +30,9 @@ public class WeaponParametersInspector : Editor
         #region Base Parameters
         GUI.Label(EditorStaticMethods.GetIndentedControlRect(indentValue), "Base Parameters", EditorStyles.boldLabel);
 
+        SerializedProperty weaponNameAttribute = serializedParameters.FindProperty("weaponName");
+        EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), weaponNameAttribute);
+
         SerializedProperty weaponPrefabAttribute = serializedParameters.FindProperty("weaponPrefab");
         EditorGUI.PropertyField(EditorStaticMethods.GetIndentedControlRect(indentValue), weaponPrefabAttribute);
         #endregion

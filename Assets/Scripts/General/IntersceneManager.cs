@@ -13,5 +13,6 @@ public class IntersceneManager : MonoBehaviour
     {
         intersceneManager = this;
         DontDestroyOnLoad(gameObject);
+        questsIntersceneManagement.LoadLibrary();
     }
 }

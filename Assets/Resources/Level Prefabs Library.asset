@@ -25,14 +25,14 @@ MonoBehaviour:
     elementPrefab: {fileID: 8061416898681612591, guid: e6a62ba5540109b4ca821db1c718d2a8,
       type: 3}
     elementAttributedColor: {r: 0.9339623, g: 0.55570143, b: 0, a: 1}
-  - elementName: Boss
-    elementPrefab: {fileID: 5178363028819352988, guid: 85bd162eacab3b349a3b432130f66ec9,
-      type: 3}
-    elementAttributedColor: {r: 0.46226418, g: 0, b: 0.46226418, a: 1}
   - elementName: Dressor
     elementPrefab: {fileID: 3262178887958398315, guid: 40c9c9764a2a22a49b5e34043bb7a874,
       type: 3}
     elementAttributedColor: {r: 0, g: 0.5415597, b: 1, a: 1}
+  - elementName: Interceptor
+    elementPrefab: {fileID: 1283073905257302344, guid: 75b14a6dcaf0abb43acc8099ae04ef3b,
+      type: 3}
+    elementAttributedColor: {r: 1, g: 0, b: 0.2760725, a: 1}
   projectilePrefabInformations:
   - elementName: Base Projectile
     elementPrefab: {fileID: 2976134964611447167, guid: 3dd41dea45add644584c72fa3782b244,

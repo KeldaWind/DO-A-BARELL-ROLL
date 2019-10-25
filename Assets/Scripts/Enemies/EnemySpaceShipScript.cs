@@ -85,7 +85,7 @@ public class EnemySpaceShipScript : SpaceShipScript, IPoolableObject
 
     public void SetUpOnPoolInstantiation(int poolIndex)
     {
-        shootingSystem.InstantiateWeapon();
+        shootingSystem.InstantiateBaseWeapon();
         gameObject.SetActive(false);
         poolingIndex = poolIndex;
     }

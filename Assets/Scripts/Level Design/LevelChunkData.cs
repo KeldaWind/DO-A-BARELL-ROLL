@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Level Chunk", menuName = "DO A BARELL ROLL Scriptables/Level Design/Level Chunk")]
+[CreateAssetMenu(fileName = "New Level Chunk", menuName = "DO A BARELL ROLL/Scriptables/Level Design/Level Chunk")]
 public class LevelChunkData : ScriptableObject
 {
     [SerializeField] LevelPrefabsLibrary prefabsLibrary;

@@ -17,4 +17,4 @@ MonoBehaviour:
   questType: 0
   questRealisationType: 1
   valueToReach: 300
-  rewardWeapon: {fileID: 0}
+  rewardWeapon: {fileID: 11400000, guid: 75d2b1f4334ece342814d396b63e96d3, type: 2}

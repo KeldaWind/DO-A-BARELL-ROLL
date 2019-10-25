@@ -39,6 +39,13 @@ public class PlayerUI : MonoBehaviour
         barFill.color = lifeBarColor.Evaluate(lifeCoeff);
     }
 
+    [Header("Weapon")]
+    [SerializeField] Text weaponText = default;
+    public void UpdateWeaponText(string selectedWeaponName)
+    {
+        weaponText.text = "Weapon : " + selectedWeaponName;
+    }
+
     [Header("Progression")]
     [SerializeField] Text distanceText = default;
     [SerializeField] Text destroyedEnemiesText = default;
@@ -63,7 +70,7 @@ public class PlayerUI : MonoBehaviour
         {
             currentQuestToShow = quests[i];
             if(currentQuestToShow != null)
-                questsUI[i].SetUp(currentQuestToShow.questName, currentQuestToShow.questDescription, currentQuestToShow.rewardWeapon != null ?currentQuestToShow.rewardWeapon.name : "", currentQuestToShow.GetCurrentValue, currentQuestToShow.valueToReach, currentQuestToShow.Done);
+                questsUI[i].SetUp(currentQuestToShow.questName, currentQuestToShow.questDescription, currentQuestToShow.rewardWeapon != null ?currentQuestToShow.rewardWeapon.weaponName : "", currentQuestToShow.GetCurrentValue, currentQuestToShow.valueToReach, currentQuestToShow.Done);
             else
                 questsUI[i].SetEmptyQuest();
         }

@@ -14,7 +14,7 @@ public class EditorStaticMethods
     #endregion
 
     #region Weapons Creation
-    [MenuItem("Assets/Create/DO A BARREL ROLL Creation Tools/Create Weapon Set", priority = 0)]
+    [MenuItem("Assets/Create/DO A BARELL ROLL/Creation Windows/Create Weapon Set", priority = 0)]
     public static void CreateWeaponSetInSelectedFolder()
     {
         Object selectedObject = Selection.activeObject;
@@ -35,7 +35,9 @@ public class EditorStaticMethods
         WeaponParameters weaponParams = ScriptableObject.CreateInstance<WeaponParameters>();
         ShootParameters shootParams = ScriptableObject.CreateInstance<ShootParameters>();
         ProjectileParameters projectileParams = ScriptableObject.CreateInstance<ProjectileParameters>();
-        
+
+        weaponParams.weaponName = weaponName;
+
         weaponParams.SetWeaponPrefab(linkedWeapon);
 
         weaponParams.SetShootParameters(shootParams);
@@ -72,7 +74,7 @@ public class EditorStaticMethods
     #endregion
 
     #region Enemies Creation
-    [MenuItem("Assets/Create/DO A BARREL ROLL Creation Tools/Create Enemy", priority = 0)]
+    [MenuItem("Assets/Create/DO A BARELL ROLL/Creation Windows/Create Enemy", priority = 0)]
     public static void CreateEnemyInSelectedFolder()
     {
         Object selectedObject = Selection.activeObject;
@@ -94,7 +96,7 @@ public class EditorStaticMethods
     #endregion
 
     #region Quests Creation
-    [MenuItem("Assets/Create/DO A BARREL ROLL Creation Tools/Create Quests", priority = 0)]
+    [MenuItem("Assets/Create/DO A BARELL ROLL/Creation Windows/Create Quests", priority = 0)]
     public static void CreateQuestsInSelectedFolder()
     {
         Object selectedObject = Selection.activeObject;

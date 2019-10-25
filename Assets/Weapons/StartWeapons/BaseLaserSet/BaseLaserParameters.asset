@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719cc4e128d919a499ee17bfe9c5b24a, type: 3}
   m_Name: BaseLaserParameters
   m_EditorClassIdentifier: 
+  weaponName: Base Laser
   shootParameters: {fileID: 11400000, guid: 3ab130ab4ce6c46498744f39128549df, type: 2}
   weaponPrefab: {fileID: 4251326305797172918, guid: 494bcdda47fa6bf4ea11a86715f20f11,
     type: 3}

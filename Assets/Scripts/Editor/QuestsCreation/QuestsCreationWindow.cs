@@ -53,6 +53,10 @@ public class QuestsCreationWindow : EditorWindow
 
         string baseTargetFolderPath = selectedFolderRef.GetFolderPath();
         string finalTargetFolderPath = baseTargetFolderPath;
+
+        Object questsLibraryObject = Resources.Load("Quests/Quests Library");
+        QuestsLibrary questsLibrary = questsLibraryObject != null ? questsLibraryObject as QuestsLibrary : null;
+
         for (int i = 1; i < lineList.Length; i++)
         {
             finalTargetFolderPath = baseTargetFolderPath;
@@ -85,19 +89,13 @@ public class QuestsCreationWindow : EditorWindow
                 finalTargetFolderPath += "/" + setName;
 
                 if (!AssetDatabase.IsValidFolder(finalTargetFolderPath))
-                {
-                    Debug.Log("Create Folder \"" + setName + "\" in \"" + baseTargetFolderPath + "\"");
-
-                    foreach (char setNameChar in setName)
-                    {
-                        Debug.Log("Set name character : " + setNameChar);
-                    }
-                    
                     AssetDatabase.CreateFolder(baseTargetFolderPath, setName);
-                }
             }
 
             EditorStaticMethods.CreateOrReplaceQuestInFolder(finalTargetFolderPath, newQuest);
+
+            if (questsLibrary != null)
+                questsLibrary.AddToLibrary(newQuest, setName);
         }
 
         Debug.Log("Succesfully loaded !");
